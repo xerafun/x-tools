@@ -10,7 +10,7 @@ from InquirerPy.base.control import Choice
 from InquirerPy.separator import Separator
 
 from config import INPUT_DIR
-from tools.common import scan_media, scan_videos
+from tools.common import scan_images, scan_media, scan_videos
 
 
 def prompt_input_mode() -> str:
@@ -109,3 +109,32 @@ def get_input_media() -> list[Path] | None:
         return files
 
     return []
+
+
+def get_input_images() -> list[Path] | None:
+    """获取待处理图片列表, 返回 None 表示用户选择返回"""
+    mode = prompt_input_mode()
+
+    if mode == "back":
+        return None
+
+    if mode == "scan":
+        images = scan_images(INPUT_DIR, recursive=False)
+        print(f"扫描到 {len(images)} 个图片")
+        return images
+
+    if mode == "path":
+        path_str = inquirer.filepath(
+            message="输入图片文件路径:",
+            validate=lambda x: Path(x).is_file(),
+        ).execute()
+        return [Path(path_str)]
+
+    if mode == "manual_dir":
+        directory, recursive = prompt_directory()
+        images = scan_images(directory, recursive=recursive)
+        print(f"扫描到 {len(images)} 个图片")
+        return images
+
+    return []
+

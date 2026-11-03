@@ -35,7 +35,7 @@ python main.py
 
 - 去水印：FFmpeg delogo / OpenCV / LaMA
 - 增加水印：文字水印、图片水印（支持图片与视频）
-- 无损压缩：H.264 / H.265（CRF 预设）
+- 无损压缩：视频 H.264 / H.265（CRF 预设）；图片 TinyPNG 级智能瘦身（libimagequant 8-bit Alpha 调色板量化、MozJPEG 渐进式抽样、WebP 转换）
 - 高清重置：FFmpeg 放大、Real-ESRGAN 超分
 - 帧数补充：FFmpeg 运动补偿、RIFE AI 插帧
 - 格式转换：转码、提取音频、去音频、快速封装

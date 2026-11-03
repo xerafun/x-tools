@@ -88,6 +88,9 @@ def main():
         elif module == "compare":
             from menus.compare import menu_compare
             menu_compare()
+        elif module == "compress":
+            from menus.media_ops import menu_compress
+            menu_compress()
 
         # 需要媒体文件 (视频 + 图片) 的模块
         elif module in ("add_watermark", "convert", "filter", "crop", "subtitle"):
@@ -138,9 +141,6 @@ def main():
             elif module == "bgm":
                 from menus.audio_video import menu_add_bgm
                 menu_add_bgm(videos)
-            elif module == "compress":
-                from menus.media_ops import menu_compress
-                menu_compress(videos)
 
         print()
         if not inquirer.confirm(message="继续其他操作?", default=True).execute():

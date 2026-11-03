@@ -13,6 +13,7 @@ dependencies = [
     "rich>=13.0.0",
     "InquirerPy>=0.3.4",
     "Pillow>=10.0.0",
+    "imagequant>=1.1.5",
     "deep-translator>=1.11.0",
     "pypdf>=4.0.0",
     "pypdfium2>=4.0.0",

@@ -26,6 +26,7 @@ OUTPUT_SUBTITLE = OUTPUT_DIR / "subtitle"
 
 
 OUTPUT_COMPRESS = OUTPUT_DIR / "compress"
+OUTPUT_COMPRESS_IMAGE = OUTPUT_COMPRESS / "images"
 OUTPUT_SLIDESHOW = OUTPUT_DIR / "slideshow"
 OUTPUT_PDF_SPLIT = OUTPUT_DIR / "pdf_split"
 OUTPUT_TTS = OUTPUT_DIR / "tts"
@@ -62,6 +63,11 @@ else:
     FFMPEG_BIN = shutil.which("ffmpeg") or "ffmpeg"
     FFPROBE_BIN = shutil.which("ffprobe") or "ffprobe"
 
+PNGQUANT_BIN = (
+    shutil.which("pngquant")
+    or str(PROJECT_ROOT / "bin" / ("pngquant.exe" if os.name == "nt" else "pngquant"))
+)
+
 # ============================================================
 # 默认参数
 # ============================================================
@@ -95,6 +101,11 @@ UPSCALE_FACTOR = 2                      # 默认放大倍数 (2x / 4x)
 # 帧数补充
 INTERPOLATION_TARGET_FPS = 60           # 目标帧率
 
+# 图片压缩 (TinyPNG 级)
+IMAGE_COMPRESS_QUALITY = 82             # 默认压缩质量 (0~100)
+IMAGE_COMPRESS_MIN_QUALITY = 65         # PNG 最低容忍质量
+IMAGE_COMPRESS_MAX_COLORS = 256         # PNG 调色板最大颜色数 (256=8-bit)
+
 # ============================================================
 # 自动质量检测 (QC) 默认阈值
 # ============================================================
@@ -122,7 +133,7 @@ def ensure_dirs():
     for d in [INPUT_DIR, OUTPUT_WATERMARK,
               OUTPUT_ADD_WATERMARK, OUTPUT_UPSCALE, OUTPUT_INTERPOLATION,
               OUTPUT_CONVERT, OUTPUT_FILTER, OUTPUT_CROP, OUTPUT_CONCAT,
-              OUTPUT_BGM, OUTPUT_SUBTITLE, OUTPUT_COMPRESS,
+              OUTPUT_BGM, OUTPUT_SUBTITLE, OUTPUT_COMPRESS, OUTPUT_COMPRESS_IMAGE,
               OUTPUT_SLIDESHOW, OUTPUT_PDF_SPLIT, OUTPUT_TTS,
               OUTPUT_PDF2VIDEO, OUTPUT_COMPARE, MUSIC_DIR]:
         d.mkdir(parents=True, exist_ok=True)
