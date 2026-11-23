@@ -8,6 +8,14 @@ version = "0.2.0"
 description = "视频处理工具箱 — 去水印、加水印、超分、插帧、关键帧提取"
 readme = "README.md"
 requires-python = ">=3.10"
+authors = [
+    { name = "xerafun", email = "50286230+xerafun@users.noreply.github.com" },
+]
+
+[project.urls]
+Homepage = "https://github.com/xerafun/x-tools"
+Repository = "https://github.com/xerafun/x-tools"
+Issues = "https://github.com/xerafun/x-tools/issues"
 dependencies = [
     "opencv-python>=4.8.0",
     "rich>=13.0.0",

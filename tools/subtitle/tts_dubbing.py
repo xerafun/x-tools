@@ -18,6 +18,7 @@ from tools.common import generate_output_name, get_video_info, logger
 
 # Edge-TTS 音色预设 (部分中英文高质量音色)
 TTS_VOICES = {
+    "yunyang": {"name": "👔 云扬 (专业沉稳商务男声)", "voice": "zh-CN-YunyangNeural"},
     "xiaoxiao": {"name": "👧 晓晓 (温柔女声)", "voice": "zh-CN-XiaoxiaoNeural"},
     "yunxi": {"name": "👦 云希 (活力男声)", "voice": "zh-CN-YunxiNeural"},
     "yunjian": {"name": "👨 云健 (影视男声)", "voice": "zh-CN-YunjianNeural"},
